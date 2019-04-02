@@ -30,7 +30,6 @@ public class AJAXMovieServlet extends HttpServlet {
 		if ("list".equals(cmd)) {
 			PrintWriter pw = response.getWriter();
 			pw.println(gson.toJson(ms.selectMovieList()));
-			System.out.println(gson.toJson(ms.selectMovieList()));
 		} else {
 			try {
 				int miNum = Integer.parseInt(cmd);
