@@ -20,4 +20,14 @@ public class MovieServiceImpl implements MovieService {
 		return mdao.insertMovie(movie);
 	}
 
+	@Override
+	public Map<String, String> selectMovieByNum(int miNum) {
+		return mdao.selectMovieByNum(miNum);
+	}
+
+	@Override
+	public int deleteMovie(int miNum) {
+		return mdao.deleteMovie(miNum);
+	}
+	
 }

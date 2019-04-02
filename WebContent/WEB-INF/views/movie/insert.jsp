@@ -11,28 +11,29 @@
 	<table border="1">
 		<tr>
 			<th>영화명</th>
-			<td><input type="text" name="miName" id="miName"></td>
+			<td><input type="text" name="mi_name" id="mi_name"></td>
 		</tr>
 		<tr>
 			<th>년도</th>
-			<td><input type="number" name="miYear" id="miYear"></td>
+			<td><input type="number" name="mi_year" id="mi_year"></td>
 		</tr>
 		<tr>
 			<th>국가</th>
-			<td><input type="text" name="miNational" id="miNational"></td>
+			<td><input type="text" name="mi_national" id="mi_national"></td>
 		</tr>
 		<tr>
 			<th>제작사</th>
-			<td><input type="text" name="miVendor" id="miVendor"></td>
+			<td><input type="text" name="mi_vendor" id="mi_vendor"></td>
 		</tr>
 		<tr>
 			<th>감독</th>
-			<td><input type="text" name="miDirector" id="miDirector"></td>
+			<td><input type="text" name="mi_director" id="mi_director"></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center"><button>등록</button>
 		</tr>
 	</table>
 </form>
+	<a href="/movie/list"><button>리스트로 돌아가기</button></a>
 </body>
 </html>

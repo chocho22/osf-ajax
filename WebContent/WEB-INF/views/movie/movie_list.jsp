@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +23,9 @@
 		</tr>
 	</c:if>
 	<c:forEach items="${movieList}" var="movie">
-	<tr>
+	<tr style="cursor:pointer" onmouseover="this.style.backgroundColor='grey'" 
+	onmouseout="this.style.backgroundColor=''"
+	onclick="goPage('${movie.miNum}')">
 		<td>${movie.miNum}</td>
 		<td>${movie.miName}</td>
 		<td>${movie.miYear}</td>
@@ -36,8 +36,12 @@
 	</c:forEach>
 </table>
 	<c:if test="${sessionScope.user!=null}">
-		<a href="/views/movie/insert">개봉 영화 등록</a>
+		<a href="/views/movie/insert"><button>개봉 영화 등록</button></a>
 	</c:if>
-
+<script>
+	function goPage(miNum) {
+		location.href="/movie/"+miNum;
+	}
+</script>
 </body>
 </html>
