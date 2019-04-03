@@ -24,7 +24,7 @@ request.getParameterNames();
 	</tbody>
 </table>
 	<c:if test="${sessionScope.user!=null}">
-		<a href="/views/movie/insert"><button>개봉 영화 등록</button></a>
+		<a href="/views/movie/ajax_insert"><button>개봉 영화 등록</button></a>
 	</c:if>
 <script>
 	var xhr = new XMLHttpRequest();
@@ -34,7 +34,6 @@ request.getParameterNames();
 			var list = JSON.parse(xhr.response);
 			var html = '';
 			for (var i=0;i<list.length;i++) {
-				console.log(xhr.response);
 				html += '<tr onmouseover="this.style.backgroundColor=\'green\'"';
 				html += ' onmouseout="this.style.backgroundColor=\'\'"';
 				html += ' onclick="goPage(' + list[i]['miNum'] + ')">';
@@ -54,5 +53,6 @@ request.getParameterNames();
 		location.href='/views/movie/ajax_view?miNum=' + miNum;
 	}
 </script>
+
 </body>
 </html>

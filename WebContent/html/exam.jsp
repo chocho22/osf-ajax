@@ -9,6 +9,7 @@
 <body>
 <%
 String str = "${str}";
+out.print("안녕안녕<br>안녕");
 %>
 ${str}
 <script>

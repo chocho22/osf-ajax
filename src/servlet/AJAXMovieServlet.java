@@ -2,9 +2,9 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,19 +45,30 @@ public class AJAXMovieServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String cmd = Command.getCmd(request);
+		String msg = "";
+		String url = "";
 		if ("insert".equals(cmd)) {
 			HttpSession hs = request.getSession();
 			if (hs.getAttribute("user") == null) {
 				Command.goResultPage(request,response,"/","로그인 하세요.");
 				return;
 			}
-			Map<String, String> movie = Command.getSingleMap(request);
-			String msg = "영화 등록 실패";
-			String url = "/movie/list";
+			Map<String,String> movie = Command.getSingleMap(request);
+			Map<String,String> rMap = new HashMap<>();
+			rMap.put("msg","영화 등록 실패");
+			rMap.put("url","/views/movie/ajax_list");
+//			msg = "영화 삭제 실패";
+//			url = "/movie/" + miNum;
 			if (ms.insertMovie(movie) == 1) {
-				msg = "영화 등록 성공";
+				rMap.put("msg","영화 등록 성공");
+//				msg = "삭제 성공";
+//				url = "/movie/list";  // 이건 ajax가 아닌 list
 			}
-			Command.goResultPage(request, response, url, msg);
+			Command.printJSON(response,rMap);  // 아래 4줄 대신
+//			response.setContentType("text/html;charset=utf-8");
+//			PrintWriter pw = response.getWriter();
+//			pw.println(gson.toJson(rMap));
+//			Command.goResultPage(request, response, url, msg);
 		} else if ("delete".equals(cmd)) {
 			HttpSession hs = request.getSession();
 			if (hs.getAttribute("user") == null) {
@@ -65,13 +76,21 @@ public class AJAXMovieServlet extends HttpServlet {
 				return;
 			}
 			int miNum = Integer.parseInt(request.getParameter("mi_num"));
-			String msg = "영화 삭제 실패";
-			String url = "/movie/" + miNum;
+			Map<String,String> rMap = new HashMap<>();
+			rMap.put("msg","영화 삭제 실패");
+			rMap.put("url","/views/movie/ajax_list");
+//			msg = "영화 삭제 실패";
+//			url = "/movie/" + miNum;
 			if (ms.deleteMovie(miNum) == 1) {
-				msg = "삭제 성공";
-				url = "/movie/list";
+				rMap.put("msg","영화 삭제 성공");
+//				msg = "삭제 성공";
+//				url = "/movie/list";  // 이건 ajax가 아닌 list
 			}
-			Command.goResultPage(request, response, url, msg);
+			Command.printJSON(response,rMap);  // 아래 4줄 대신
+//			response.setContentType("text/html;charset=utf-8");
+//			PrintWriter pw = response.getWriter();
+//			pw.println(gson.toJson(rMap));
+//			Command.goResultPage(request, response, url, msg);
 		}
 	}
 }

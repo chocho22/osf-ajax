@@ -1,6 +1,7 @@
 package utils;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -10,8 +11,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 public class Command {
 	private static final String RESULT_PATH = "/views/msg/result";
+	private static final Gson JSON = new Gson();
 	
 	public static String getCmd(HttpServletRequest req) throws ServletException {
 		String uri = req.getRequestURI();
@@ -45,5 +49,11 @@ public class Command {
 			pMap.put(key, value);
 		}
 		return pMap;
+	}
+	
+	public static <T> void printJSON(HttpServletResponse response, T obj) throws IOException {
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter pw = response.getWriter();
+		pw.print(JSON.toJson(obj));
 	}
 }

@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:if test="${sessionScope.user!=null}">
+	<button onclick="deleteMovie()">삭제</button>
+</c:if>
 <table border="1">
 	<tr>
 		<th>번호</th>
@@ -21,11 +24,26 @@
 		</tbody>
 </table>
 <script>
+	function deleteMovie() {
+		xhr.open('POST', '/am/delete');
+		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState==4 && xhr.status==200) {
+				var result = JSON.parse(xhr.response);
+				alert(result.msg);
+				if(result.url) {
+					location.href = result.url;
+				}
+			}
+		}
+		xhr.send('mi_num=${param.miNum}');
+	}
+	
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', '/am/${param.miNum}');
 	xhr.onreadystatechange = function() {
-		var html = '';
 		if(xhr.readyState==4 && xhr.status==200) {
+			var html = '';
 			var movie = JSON.parse(xhr.response);
 			html = '<tr>';
 			html += '<td>' + movie['miNum'] + '</td>';
@@ -35,11 +53,11 @@
 			html += '<td>' + movie['miVendor'] + '</td>';
 			html += '<td>' + movie['miDirector'] + '</td>';
 			html += '</tr>';
+			document.querySelector('#tbody').innerHTML = html;
 		}
-		document.querySelector('#tbody').innerHTML = html;
 	}
 	xhr.send();
 </script>
-<a href="/am/list"><button>리스트로 돌아가기</button></a>
+<a href="/views/movie/ajax_list"><button>리스트로 돌아가기</button></a>
 </body>
 </html>
