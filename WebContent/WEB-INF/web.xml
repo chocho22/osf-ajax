@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>osf-ajax</display-name>
+  <display-name>osf-ajax2</display-name>
   <welcome-file-list>
     <welcome-file>/WEB-INF/views/index.jsp</welcome-file>
   </welcome-file-list>
@@ -44,24 +44,30 @@
     <servlet-name>AJAXMovieServlet</servlet-name>
     <url-pattern>/am/*</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>FileServlet</servlet-name>
+    <servlet-class>servlet.FileServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FileServlet</servlet-name>
+    <url-pattern>/file/*</url-pattern>
+  </servlet-mapping>
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>
       <include-prelude>/WEB-INF/views/common/header.jspf</include-prelude>
     </jsp-property-group>
   </jsp-config>
-  
   <filter>
-  	<filter-name>EncodingFilter</filter-name>
-  	<filter-class>filter.EncodingFilter</filter-class>
-  	<init-param>
-  		<param-name>encoding</param-name>
-  		<param-value>utf-8</param-value>
-  	</init-param>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>filter.EncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
   </filter>
   <filter-mapping>
-  	<filter-name>EncodingFilter</filter-name>
-  	<url-pattern>*</url-pattern>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>*</url-pattern>
   </filter-mapping>
 </web-app>
