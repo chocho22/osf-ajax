@@ -22,15 +22,15 @@ public class UploadFile {
 	private static final int FILE_SIZE = 100*1024*1024;
     private static final File TMP_FOLDER = new File(TMP_PATH);
     private static final File TARGET_FOLDER = new File(TARGET_PATH);
-	private static final DiskFileItemFactory DFI_FACTOFY = new DiskFileItemFactory();
+	private static final DiskFileItemFactory DFI_FACTORY = new DiskFileItemFactory();
 	static {
-		DFI_FACTOFY.setSizeThreshold(MEMORY_SIZE);
-		DFI_FACTOFY.setRepository(TMP_FOLDER);
+		DFI_FACTORY.setSizeThreshold(MEMORY_SIZE);
+		DFI_FACTORY.setRepository(TMP_FOLDER);
 		
 	}
 	public static Map<String,Object> parseRequest(HttpServletRequest request) throws ServletException {
 		
-		ServletFileUpload sfu = new ServletFileUpload(DFI_FACTOFY);
+		ServletFileUpload sfu = new ServletFileUpload(DFI_FACTORY);
 		sfu.setFileSizeMax(FILE_SIZE);
 		sfu.setSizeMax(TOTAL_SIZE);
 		
