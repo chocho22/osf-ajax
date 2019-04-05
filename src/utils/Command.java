@@ -39,6 +39,13 @@ public class Command {
 		rd.forward(request, response);
 	}
 	
+	public static void goPage(HttpServletRequest request,
+			HttpServletResponse response,String url) 
+					throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.forward(request, response);
+	}
+	
 	public static Map<String,String> getSingleMap(HttpServletRequest request) {
 		Map<String,String> pMap = new HashMap<>();
 		Map<String,String[]> map = request.getParameterMap();
