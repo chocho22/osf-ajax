@@ -35,7 +35,7 @@ public class FileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Map<String,String> rMap = fs.parseText(request);
 		Command.printJSON(response, rMap);
-		doGet(request, response);
+		Command.goResultPage(request, response, "/views/addr1/list","업로드 완료");
 	}
 
 }

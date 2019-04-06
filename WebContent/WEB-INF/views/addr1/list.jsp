@@ -9,7 +9,7 @@
 <body>
 <script>
 	function changePageCount(obj) {
-		location.href="/addr/list?page=${page}&pageCount=" + obj.value;
+		location.href="/addr/list?page=${page}&pageCount=" + obj.value + "&ad_dong=${param.ad_dong}";
 	}
 	function search() {
 		var ad_dong = document.querySelector('#ad_dong').value;

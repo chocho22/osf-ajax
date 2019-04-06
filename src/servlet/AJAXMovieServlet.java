@@ -54,21 +54,21 @@ public class AJAXMovieServlet extends HttpServlet {
 				return;
 			}
 			Map<String,String> movie = Command.getSingleMap(request);
-			Map<String,String> rMap = new HashMap<>();
-			rMap.put("msg","영화 등록 실패");
-			rMap.put("url","/views/movie/ajax_list");
-//			msg = "영화 삭제 실패";
-//			url = "/movie/" + miNum;
+//			Map<String,String> rMap = new HashMap<>();
+//			rMap.put("msg","영화 등록 실패");
+//			rMap.put("url","/views/movie/ajax_list");
+			msg = "영화 등록 실패";
+			url = "/views/movie/ajax_list";
 			if (ms.insertMovie(movie) == 1) {
-				rMap.put("msg","영화 등록 성공");
-//				msg = "삭제 성공";
+//				rMap.put("msg","영화 등록 성공");
+				msg = "영화 등록 성공";
 //				url = "/movie/list";  // 이건 ajax가 아닌 list
 			}
-			Command.printJSON(response,rMap);  // 아래 4줄 대신
+//			Command.printJSON(response,rMap);  // 아래 4줄 대신
 //			response.setContentType("text/html;charset=utf-8");
 //			PrintWriter pw = response.getWriter();
 //			pw.println(gson.toJson(rMap));
-//			Command.goResultPage(request, response, url, msg);
+			Command.goResultPage(request, response, url, msg);
 		} else if ("delete".equals(cmd)) {
 			HttpSession hs = request.getSession();
 			if (hs.getAttribute("user") == null) {
