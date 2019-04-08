@@ -9,7 +9,7 @@
 <body>
 <script>
 	function changePageCount(obj) {
-		location.href="/addr/list?page=${page}&pageCount=" + obj.value;
+		location.href="/addr/list?page=${page}&ad_dong=${param.ad_dong}&pageCount=" + obj.value;
 	}
 	function search() {
 		var ad_dong = document.querySelector('#ad_dong').value;
@@ -61,7 +61,7 @@
 				<td>${addr.ad_num}</td>
 				<td>${addr.ad_sido}</td>
 				<td>${addr.ad_gugun}</td>
-				<td>${addr.ad_dong}</td>
+				<td><a href="/addr/view?ad_num=${addr.ad_num}&page=${page}&pageCount=${pageCount}&ad_dong=${addr.ad_dong}">${addr.ad_dong}</a></td>
 				<td>${addr.ad_lee}</td>
 				<td>${addr.ad_bunji}</td>
 				<td>${addr.ad_ho}</td>
