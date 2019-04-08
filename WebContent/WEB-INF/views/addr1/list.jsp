@@ -9,99 +9,98 @@
 <body>
 <script>
 	function changePageCount(obj) {
-<<<<<<< HEAD
 		location.href="/addr/list?page=${page}&ad_dong=${param.ad_dong}&pageCount=" + obj.value;
-=======
-		location.href="/addr/list?page=${page}&pageCount=" + obj.value + "&ad_dong=${param.ad_dong}";
->>>>>>> branch 'master' of https://github.com/crisoberyl/osf-ajax.git
 	}
 	function search() {
 		var ad_dong = document.querySelector('#ad_dong').value;
 		location.href="/addr/list?pageCount=${pageCount}&ad_dong=" + ad_dong;
 	}
+	
 </script>
-<label for="ad_dong">읍면동 : </label><input type="text" name="ad_dong" value="${param.ad_dong}" id="ad_dong">
-<button onclick="search()">검색</button>
-<select name="pageCount" onchange="changePageCount(this)">
-	<option value="10"
-	<c:if test="${pageCount==10}">
-		selected
-	</c:if>
-	>10</option>
-	<option value="20"
-	<c:if test="${pageCount==20}">
-		selected
-	</c:if>
-	>20</option>
-	<option value="30"
-	<c:if test="${pageCount==30}">
-		selected
-	</c:if>
-	>30</option>
-	<option value="40"
-	<c:if test="${pageCount==40}">
-		selected
-	</c:if>
-	>40</option>
-	<option value="50"
-	<c:if test="${pageCount==50}">
-		selected
-	</c:if>
-	>50</option>
-</select><br><br>
 
-	<table border="1">
-		<tr>
-			<th>번호</th>
-			<th>시도</th>
-			<th>구군</th>
-			<th>동</th>
-			<th>리</th>
-			<th>번지</th>
-			<th>호</th>
-		</tr>
-		<c:forEach items="${list}" var="addr">
+	<label for="ad_dong">읍면동 : </label><input type="text" name="ad_dong" value="${param.ad_dong}" id="ad_dong">
+	<button onclick="search()">검색</button>
+	<select name="pageCount" onchange="changePageCount(this)">
+		<option value="10"
+		<c:if test="${pageCount==10}">
+			selected
+		</c:if>
+		>10</option>
+		<option value="20"
+		<c:if test="${pageCount==20}">
+			selected
+		</c:if>
+		>20</option>
+		<option value="30"
+		<c:if test="${pageCount==30}">
+			selected
+		</c:if>
+		>30</option>
+		<option value="40"
+		<c:if test="${pageCount==40}">
+			selected
+		</c:if>
+		>40</option>
+		<option value="50"
+		<c:if test="${pageCount==50}">
+			selected
+		</c:if>
+		>50</option>
+	</select><br><br>
+	
+		<table border="1">
 			<tr>
-				<td>${addr.ad_num}</td>
-				<td>${addr.ad_sido}</td>
-				<td>${addr.ad_gugun}</td>
-				<td><a href="/addr/view?ad_num=${addr.ad_num}&page=${page}&pageCount=${pageCount}&ad_dong=${addr.ad_dong}">${addr.ad_dong}</a></td>
-				<td>${addr.ad_lee}</td>
-				<td>${addr.ad_bunji}</td>
-				<td>${addr.ad_ho}</td>
+				<th>번호</th>
+				<th>시도</th>
+				<th>구군</th>
+				<th>동</th>
+				<th>리</th>
+				<th>번지</th>
+				<th>호</th>
 			</tr>
-		</c:forEach>
-		<tr>
-			<td colspan="7" align="right">총 갯수 : ${totalCnt}</td>
-		</tr>
-		<tr>
-			<td colspan="7" align="center">
-				<c:if test="${page!=1}">
-					<a href="/addr/list?pageCount=${pageCount}&ad_dong=${param.ad_dong}">◀</a>
-				</c:if>
-				<c:if test="${page>10}">
-					<a href="/addr/list?page=${page-10}&pageCount=${pageCount}
-					&ad_dong=${param.ad_dong}">◁</a>
-				</c:if>
-				<c:forEach var="p" begin="${fBlock}" end="${lBlock}">
-					<c:if test="${p!=page}">
-						<a href="/addr/list?page=${p}&pageCount=${pageCount}
-						&ad_dong=${param.ad_dong}">[${p}]</a>
+			<c:forEach items="${list}" var="addr">
+				<tr>
+					<td>${addr.ad_num}</td>
+					<td>${addr.ad_sido}</td>
+					<td>${addr.ad_gugun}</td>
+					<td><a href="/addr/view?ad_num=${addr.ad_num}&page=${page}&pageCount=${pageCount}&ad_dong=${addr.ad_dong}">${addr.ad_dong}</a></td>
+					<td>${addr.ad_lee}</td>
+					<td>${addr.ad_bunji}</td>
+					<td>${addr.ad_ho}</td>
+				</tr>
+			</c:forEach>
+			<tr>
+				<td colspan="7" align="right">총 갯수 : ${totalCnt}</td>
+			</tr>
+			<tr>
+				<td colspan="7" align="center">
+					<c:if test="${page!=1}">
+						<a href="/addr/list?pageCount=${pageCount}&ad_dong=${param.ad_dong}">◀</a>
 					</c:if>
-					<c:if test="${p==page}">
-						<b>[${p}]</b>
+					<c:if test="${page>10}">
+						<a href="/addr/list?page=${page-10}&pageCount=${pageCount}
+						&ad_dong=${param.ad_dong}">◁</a>
 					</c:if>
-				</c:forEach>
-				
-				<c:if test="${(totalPageCnt-10)>=page}">
-					<a href="/addr/list?page=${page+10}&pageCount=${pageCount}
-					&ad_dong=${param.ad_dong}">▷</a>
-				</c:if>
-				<c:if test="${totalPageCnt!=page}">
-					<a href="/addr/list?page=${totalPageCnt}&pageCount=${pageCount}
-					&ad_dong=${param.ad_dong}">▶</a>
-				</c:if>
-		</tr>
-	</table>
+					<c:forEach var="p" begin="${fBlock}" end="${lBlock}">
+						<c:if test="${p!=page}">
+							<a href="/addr/list?page=${p}&pageCount=${pageCount}
+							&ad_dong=${param.ad_dong}">[${p}]</a>
+						</c:if>
+						<c:if test="${p==page}">
+							<b>[${p}]</b>
+						</c:if>
+					</c:forEach>
+					
+					<c:if test="${(totalPageCnt-10)>=page}">
+						<a href="/addr/list?page=${page+10}&pageCount=${pageCount}
+						&ad_dong=${param.ad_dong}">▷</a>
+					</c:if>
+					<c:if test="${totalPageCnt!=page}">
+						<a href="/addr/list?page=${totalPageCnt}&pageCount=${pageCount}
+						&ad_dong=${param.ad_dong}">▶</a>
+					</c:if>
+			</tr>
+		</table>
+
 </body>
 </html>

@@ -27,13 +27,13 @@ public class AddrServlet2 extends HttpServlet {
 			rMap.put("pageCount", request.getAttribute("pageCount"));
 			rMap.put("blockCount", request.getAttribute("blockCount"));
 			rMap.put("ad_dong", request.getParameter("ad_dong"));
-			rMap.put("totalCnt", request.getAttribute("totalcnt"));
+			rMap.put("totalCnt", request.getAttribute("totalCnt"));
 			rMap.put("fBlock", request.getAttribute("fBlock"));
 			rMap.put("lBlock", request.getAttribute("lBlock"));
 			Command.printJSON(response, rMap);
 		} else if("view".equals(cmd)) {
 			as.selectAddr(request);
-			Command.goPage(request,response,"/views/addr1/view");
+			Command.goPage(request,response,"/views/addr2/view");
 		}
 	}
 

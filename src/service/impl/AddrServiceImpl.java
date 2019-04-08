@@ -19,10 +19,10 @@ public class AddrServiceImpl implements AddrService {
 		int page = 1;
 		int pageCount = 10;
 		int blockCount = 10;
-		if (paramMap.get("page") != null) {
+		if (paramMap.get("page") != null && !"".equals(paramMap.get("page"))) {
 			page = Integer.parseInt(paramMap.get("page"));
 		}
-		if (paramMap.get("pageCount") != null) {
+		if (paramMap.get("pageCount") != null && !"".equals(paramMap.get("pageCount"))) {
 			pageCount = Integer.parseInt(paramMap.get("pageCount"));
 		}
 		if (paramMap.get("blockCount") != null) {
@@ -36,6 +36,7 @@ public class AddrServiceImpl implements AddrService {
 		int sNum = lNum - (pageCount - 1);
 		paramMap.put("lNum", lNum + "");
 		paramMap.put("sNum", sNum + "");
+		
 		List<Map<String, String>> addrList = adao.selectAddrList(paramMap);
 		request.setAttribute("list", addrList);
 

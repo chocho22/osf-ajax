@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1">
+	<table border="1" id="addrTable">
 		<tr>
 			<th>번호</th>
 			<td>${addr.ad_num}</td>
@@ -37,10 +37,10 @@
 			<td>${addr.ad_ho}</td>
 		</tr>
 	</table>
-	<button onclick="goList()">리스트 가기</button>
+	<button onclick="closeTable()">닫기</button>
 <script>
-	function goList() {
-		location.href="/views/addr2/list?page=${page}&pageCount=${pageCount}&ad_dong=${param.ad_dong}";
+	function closeTable() {
+		document.querySelector('#addrTable').style.display='none';		
 	}
 </script>
 </body>
