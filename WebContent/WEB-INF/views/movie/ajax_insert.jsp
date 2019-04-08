@@ -32,7 +32,7 @@
 			<td colspan="2" align="center"><button onclick="insertMovie()">등록</button>
 		</tr>
 	</table>
-	<button>리스트로 돌아가기</button>
+	<a href="/views/movie/ajax_list"><button>리스트로 돌아가기</button></a>
 	<script>
 		function insertMovie() {
 			var inputs = document.querySelectorAll('input[name]');
@@ -50,7 +50,7 @@
 					var result = JSON.parse(xhr.response);
 					alert(result.msg);
 					if(result.url) {
-						locaion.href = result.url;
+						location.href = result.url;
 					}
 				}
 			}

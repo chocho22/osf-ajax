@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<button onclick="a()">a함수</button>
 <c:if test="${sessionScope.user!=null}">
 	<button onclick="deleteMovie()">삭제</button>
 </c:if>
