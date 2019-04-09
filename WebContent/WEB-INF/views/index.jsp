@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div align="center">
 <a href="/movie/list"><button>영화 개봉 리스트</button></a><br><br>
 <a href="/views/movie/ajax_list"><button>Ajax 리스트 가기</button></a><br><br>
 <c:if test="${sessionScope.user==null}">
@@ -23,7 +24,7 @@
 	<tr>
 		<td colspan="2" align="center"><button>로그인</button>
 	</tr>
-</table>
+</table><br><br>
 <input type="hidden" name="cmd" value="login">
 </form>
 <a href="/views/user/join"><button>회원가입</button></a>
@@ -36,5 +37,6 @@
 <button>로그아웃</button>
 </form>
 </c:if>
+</div>
 </body>
 </html>
