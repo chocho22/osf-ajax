@@ -82,14 +82,13 @@
 		xhr.send(JSON.stringify(params));
 	}
 	function deleteAddr(ad_num) {
-		var inputs = document.querySelector('#ad_num').value;
+		var inputs = document.querySelectorAll('input[id]');
 		var params = {};
-		/* alert(ad_num); */
-		params['ad_num']=ad_num;
-/* 		for(var i=0;i<inputs.length;i++) {
+		/* for(var i=0;i<inputs.length;i++) {
 			var input = inputs[i];
 			params[input.id]=input.value;
 		} */
+		params.ad_num=ad_num;
 		var xhr = new XMLHttpRequest();
 		xhr.open('POST','/addr2/delete');
 		xhr.setRequestHeader('Content-Type','application/json');
@@ -122,14 +121,14 @@
 					var html = '';
 					for(var addr of res.list) {
 						html += '<tr>';
-						html += '<td>' + addr.ad_num + '</td>'
-						html += '<td>' + addr.ad_sido + '</td>'
-						html += '<td>' + addr.ad_gugun + '</td>'
-						html += '<td><a href="javascript:view(' + addr.ad_num + ')">' + addr.ad_dong + '</a></td>'
-						html += '<td>' + (addr.ad_lee?addr.ad_lee:'') + '</td>'
-						html += '<td>' + addr.ad_bunji + '</td>'
-						html += '<td>' + addr.ad_ho + '</td>'
-						html += '<td><button onclick="deleteAddr('+ addr.ad_num +')">삭제</button></td>'
+						html += '<td>' + addr.ad_num + '</td>';
+						html += '<td>' + addr.ad_sido + '</td>';
+						html += '<td>' + addr.ad_gugun + '</td>';
+						html += '<td><a href="javascript:view(' + addr.ad_num + ')">' + addr.ad_dong + '</a></td>';
+						html += '<td>' + (addr.ad_lee?addr.ad_lee:'') + '</td>';
+						html += '<td>' + addr.ad_bunji + '</td>';
+						html += '<td>' + addr.ad_ho + '</td>';
+						html += '<td><button onclick="deleteAddr(\''+ addr.ad_num +'\')">삭제</button></td>';
 						html += '</tr>';
 					}
 					html += '<tr align="center">';

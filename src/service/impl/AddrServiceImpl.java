@@ -95,10 +95,8 @@ public class AddrServiceImpl implements AddrService {
 			update = "true";
 			msg = "수정에 성공했습니다.";
 		}
-		String url = "/addr2/list";
 		response.put("update",update);
 		response.put("msg",msg);
-		response.put("url",url);
 		
 		return response;
 	}
@@ -113,10 +111,8 @@ public class AddrServiceImpl implements AddrService {
 			delete = "true";
 			msg = "삭제 성공했습니다.";
 		}
-		String url = "/addr2/list";
 		response.put("delete",delete);
 		response.put("msg",msg);
-		response.put("url",url);
 		
 		return response;
 	}
