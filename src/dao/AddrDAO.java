@@ -7,4 +7,6 @@ public interface AddrDAO {
 	public List<Map<String,String>> selectAddrList(Map<String,String> addr);
 	public Map<String,String> selectAddr(Map<String,String> addr);
 	public int selectTotalAddrCnt(Map<String,String> addr);
+	public int updateAddr(Map<String,String> param);
+	public int deleteAddr(Map<String, String> param);
 }

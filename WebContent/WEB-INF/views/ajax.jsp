@@ -19,7 +19,7 @@
 		au.open('/addr2/list');
 		au.setCallback(callback);
 		au.send();
-		console.log('이초롱 메롱');
+		
 		
 	</script>
 </body>

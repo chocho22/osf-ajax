@@ -38,8 +38,13 @@ public class AddrServlet2 extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cmd = Command.getCmd(request);
+		if("update".equals(cmd)) {
+			Command.printJSON(response, as.updateAddr(request));
+		} else if("delete".equals(cmd)) {
+			Command.printJSON(response, as.deleteAddr(request));
+		}
 		
-		doGet(request, response);
 	}
 
 }
